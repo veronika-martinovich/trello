@@ -18,7 +18,7 @@ class User {
     return { id, name, login };
   }
 
-  static fromRequest(body) {
+  static createFromRequest(body) {
     return new User(body);
   }
 }

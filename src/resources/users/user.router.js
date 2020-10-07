@@ -9,7 +9,7 @@ router
     res.json(users.map(user => User.toResponse(user)));
   })
   .post(async (req, res) => {
-    const user = await usersService.save(User.fromRequest(req.body));
+    const user = await usersService.save(User.createFromRequest(req.body));
     res.status(200).send(User.toResponse(user));
   });
 
@@ -24,10 +24,7 @@ router
     res.status(200).send(User.toResponse(user));
   })
   .put(async (req, res) => {
-    const user = await usersService.update(
-      req.params.id,
-      User.fromRequest(req.body)
-    );
+    const user = await usersService.update(req.params.id, req.body);
     res.status(200).send(User.toResponse(user));
   });
 

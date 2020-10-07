@@ -1,5 +1,6 @@
 const db = {
-  Users: []
+  Users: [],
+  Boards: []
 };
 
 const getAllEntities = tableName => {
@@ -21,7 +22,10 @@ const getEntity = (tableName, id) => {
 const updateEntity = (tableName, id, entity) => {
   const oldEntity = getEntity(tableName, id);
   if (oldEntity) {
-    db[tableName][db[tableName].indexOf(oldEntity)] = { ...entity };
+    db[tableName][db[tableName].indexOf(oldEntity)] = {
+      ...oldEntity,
+      ...entity
+    };
   }
   return getEntity(tableName, id);
 };
