@@ -18,7 +18,7 @@ const getEntity = (tableName, id) => {
   return entities[0];
 };
 
-const updateEntity = async (tableName, id, entity) => {
+const updateEntity = (tableName, id, entity) => {
   const oldEntity = getEntity(tableName, id);
   if (oldEntity) {
     db[tableName][db[tableName].indexOf(oldEntity)] = { ...entity };

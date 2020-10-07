@@ -14,7 +14,7 @@ const get = async id => {
 };
 
 const update = async (id, user) => {
-  const entity = await DB.updateEntity(TABLE_NAME, id, user);
+  const entity = DB.updateEntity(TABLE_NAME, id, user);
   if (!entity) {
     throw new Error(`Couldn't find user with id: ${id}`);
   }
