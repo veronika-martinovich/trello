@@ -3,11 +3,11 @@ const db = {
   Boards: []
 };
 
-const getAllEntities = tableName => {
+const getAllEntities = async tableName => {
   return db[tableName];
 };
 
-const getEntity = (tableName, id) => {
+const getEntity = async (tableName, id) => {
   const entities = db[tableName].filter(item => item.id === id);
 
   if (entities.length > 1) {
@@ -19,19 +19,19 @@ const getEntity = (tableName, id) => {
   return entities[0];
 };
 
-const updateEntity = (tableName, id, entity) => {
-  const oldEntity = getEntity(tableName, id);
+const updateEntity = async (tableName, id, entity) => {
+  const oldEntity = await getEntity(tableName, id);
   if (oldEntity) {
     db[tableName][db[tableName].indexOf(oldEntity)] = {
       ...oldEntity,
       ...entity
     };
   }
-  return getEntity(tableName, id);
+  return await getEntity(tableName, id);
 };
 
-const removeEntity = (tableName, id) => {
-  const entity = getEntity(tableName, id);
+const removeEntity = async (tableName, id) => {
+  const entity = await getEntity(tableName, id);
   const index = db[tableName].indexOf(entity);
   db[tableName] = [
     ...db[tableName].slice(0, index),
@@ -40,7 +40,7 @@ const removeEntity = (tableName, id) => {
   return entity;
 };
 
-const saveEntity = (tableName, entity) => {
+const saveEntity = async (tableName, entity) => {
   db[tableName].push(entity);
   return getEntity(tableName, entity.id);
 };
