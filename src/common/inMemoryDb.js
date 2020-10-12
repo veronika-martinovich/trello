@@ -1,6 +1,15 @@
+const User = require('../resources/users/user.model');
+const Board = require('../resources/boards/board.model');
+const Task = require('../resources/tasks/task.model');
+
 const db = {
-  Users: [],
-  Boards: []
+  Users: [new User(), new User()],
+  Boards: [new Board(), new Board()],
+  Tasks: [new Task(), new Task()]
+};
+
+const getAllEntitiesByParam = async (tableName, paramName, paramId) => {
+  return db[tableName].filter(item => item[paramName] === paramId);
 };
 
 const getAllEntities = async tableName => {
@@ -9,7 +18,7 @@ const getAllEntities = async tableName => {
 
 const getEntity = async (tableName, id) => {
   const entities = db[tableName].filter(item => item.id === id);
-
+  console.log(entities);
   if (entities.length > 1) {
     console.error(
       `The DB data is damaged. Table: ${tableName}. Entity ID: ${id}`
@@ -46,6 +55,7 @@ const saveEntity = async (tableName, entity) => {
 };
 
 module.exports = {
+  getAllEntitiesByParam,
   getAllEntities,
   getEntity,
   updateEntity,
