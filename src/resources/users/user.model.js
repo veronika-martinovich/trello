@@ -17,6 +17,10 @@ class User {
     const { id, name, login } = user;
     return { id, name, login };
   }
+
+  static createFromRequest(body) {
+    return new User(body);
+  }
 }
 
 module.exports = User;
