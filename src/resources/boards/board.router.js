@@ -1,8 +1,9 @@
-const router = require('express').Router();
+const boardsRouter = require('express').Router();
 const boardsService = require('./board.service');
 const Board = require('./board.model');
+const tasksRouter = require('../tasks/task.router');
 
-router
+boardsRouter
   .route('/')
   .get(async (req, res) => {
     try {
@@ -21,11 +22,11 @@ router
     }
   });
 
-router
-  .route('/:id')
+boardsRouter
+  .route('/:boardId')
   .get(async (req, res) => {
     try {
-      const board = await boardsService.get(req.params.id);
+      const board = await boardsService.get(req.params.boardId);
       res.json(board);
     } catch (error) {
       res.status(404).send('404 Not Found');
@@ -33,7 +34,7 @@ router
   })
   .delete(async (req, res) => {
     try {
-      const board = await boardsService.remove(req.params.id);
+      const board = await boardsService.remove(req.params.boardId);
       res.json(board);
     } catch (error) {
       res.status(404).send('404 Not Found');
@@ -41,11 +42,13 @@ router
   })
   .put(async (req, res) => {
     try {
-      const board = await boardsService.update(req.params.id, req.body);
+      const board = await boardsService.update(req.params.boardId, req.body);
       res.json(board);
     } catch (error) {
       res.status(404).send('404 Not Found');
     }
   });
 
-module.exports = router;
+boardsRouter.use('/:boardId/tasks', tasksRouter);
+
+module.exports = boardsRouter;

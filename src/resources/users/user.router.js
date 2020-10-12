@@ -1,8 +1,8 @@
-const router = require('express').Router();
+const usersRouter = require('express').Router();
 const User = require('./user.model');
 const usersService = require('./user.service');
 
-router
+usersRouter
   .route('/')
   .get(async (req, res) => {
     try {
@@ -21,11 +21,11 @@ router
     }
   });
 
-router
-  .route('/:id')
+usersRouter
+  .route('/:userId')
   .get(async (req, res) => {
     try {
-      const user = await usersService.get(req.params.id);
+      const user = await usersService.get(req.params.userId);
       res.status(200).send(User.toResponse(user));
     } catch (error) {
       res.status(404).send('404 Not Found');
@@ -33,7 +33,7 @@ router
   })
   .delete(async (req, res) => {
     try {
-      const user = await usersService.remove(req.params.id);
+      const user = await usersService.remove(req.params.userId);
       res.status(200).send(User.toResponse(user));
     } catch (error) {
       res.status(404).send('404 Not Found');
@@ -41,11 +41,11 @@ router
   })
   .put(async (req, res) => {
     try {
-      const user = await usersService.update(req.params.id, req.body);
+      const user = await usersService.update(req.params.userId, req.body);
       res.status(200).send(User.toResponse(user));
     } catch (error) {
       res.status(404).send('404 Not Found');
     }
   });
 
-module.exports = router;
+module.exports = usersRouter;
