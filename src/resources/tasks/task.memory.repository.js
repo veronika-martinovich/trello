@@ -6,6 +6,11 @@ const getAll = async paramId => {
   return await DB.getAllEntitiesByParam(TABLE_NAME, PARAM_NAME, paramId);
 };
 
+const getAllByUser = async userId => {
+  const PARAM_NAME = 'userId';
+  return await DB.getAllEntitiesByParam(TABLE_NAME, PARAM_NAME, userId);
+};
+
 const getById = async (boardId, taskId) => {
   const entity = await DB.getEntity(TABLE_NAME, taskId);
   console.log('getById', entity);
@@ -36,4 +41,4 @@ const save = async task => {
   return await DB.saveEntity(TABLE_NAME, task);
 };
 
-module.exports = { getAll, getById, update, remove, save };
+module.exports = { getAll, getAllByUser, getById, update, remove, save };
