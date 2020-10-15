@@ -4,6 +4,9 @@ const path = require('path');
 const YAML = require('yamljs');
 const usersRouter = require('./resources/users/user.router');
 const boardsRouter = require('./resources/boards/board.router');
+const tasksRouter = require('./resources/tasks/task.router');
+const middlewareErrorHandler = require('./helpers/errorHandlers')
+  .middlewareErrorHandler;
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
@@ -24,9 +27,8 @@ app.use('/users', usersRouter);
 
 app.use('/boards', boardsRouter);
 
-app.use((err, req, res) => {
-  console.error(err.stack);
-  res.status(500).send('500 Server Error');
-});
+boardsRouter.use('/:boardId/tasks', tasksRouter);
+
+app.use(middlewareErrorHandler);
 
 module.exports = app;
