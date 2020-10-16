@@ -1,7 +1,7 @@
 const tasksRouter = require('express').Router({ mergeParams: true });
 const tasksService = require('./task.service');
 const Task = require('./task.model');
-const isTaskValid = require('./task.validation');
+const validateTask = require('./task.validation');
 const asyncErrorHandler = require('../../helpers/errorHandlers')
   .asyncErrorHandler;
 
@@ -25,7 +25,7 @@ tasksRouter
         boardId: req.params.boardId,
         columnId: req.body.columnId
       });
-      isTaskValid(taskToCreate);
+      validateTask(taskToCreate);
       const task = await tasksService.save(taskToCreate);
       res.json(task);
     })

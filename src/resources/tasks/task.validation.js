@@ -2,7 +2,7 @@ const isString = require('../../helpers/validation').isString;
 const isNumber = require('../../helpers/validation').isNumber;
 const InvalidDataError = require('../../helpers/errors').InvalidDataError;
 
-const isTaskValid = ({ title, order, description }) => {
+const validateTask = ({ title, order, description }) => {
   if (!isString(title)) {
     throw new InvalidDataError('Invalid task title data');
   } else if (!isNumber(order)) {
@@ -12,4 +12,4 @@ const isTaskValid = ({ title, order, description }) => {
   }
 };
 
-module.exports = isTaskValid;
+module.exports = validateTask;

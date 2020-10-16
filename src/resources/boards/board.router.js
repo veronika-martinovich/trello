@@ -1,7 +1,7 @@
 const boardsRouter = require('express').Router();
 const boardsService = require('./board.service');
 const Board = require('./board.model');
-const isBoardValid = require('./board.validation');
+const validateBoard = require('./board.validation');
 const asyncErrorHandler = require('../../helpers/errorHandlers')
   .asyncErrorHandler;
 
@@ -18,7 +18,7 @@ boardsRouter
     asyncErrorHandler(async (req, res) => {
       // reject(Error('Oops!'))
       const boardToCreate = Board.createFromRequest(req.body);
-      isBoardValid(boardToCreate);
+      validateBoard(boardToCreate);
       const board = await boardsService.save(boardToCreate);
       res.json(board);
     })
