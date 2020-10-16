@@ -1,6 +1,7 @@
 const boardsRouter = require('express').Router();
 const boardsService = require('./board.service');
 const Board = require('./board.model');
+const isBoardValid = require('./board.validation');
 const asyncErrorHandler = require('../../helpers/errorHandlers')
   .asyncErrorHandler;
 
@@ -8,24 +9,18 @@ boardsRouter
   .route('/')
   .get(
     asyncErrorHandler(async (req, res) => {
-      try {
-        const boards = await boardsService.getAll();
-        res.json(boards);
-      } catch (error) {
-        res.status(404).send('404 Not Found');
-      }
+      // reject(Error('Oops!'))
+      const boards = await boardsService.getAll();
+      res.json(boards);
     })
   )
   .post(
     asyncErrorHandler(async (req, res) => {
-      try {
-        const board = await boardsService.save(
-          Board.createFromRequest(req.body)
-        );
-        res.json(board);
-      } catch (error) {
-        res.status(404).send('404 Not Found');
-      }
+      // reject(Error('Oops!'))
+      const boardToCreate = Board.createFromRequest(req.body);
+      isBoardValid(boardToCreate);
+      const board = await boardsService.save(boardToCreate);
+      res.json(board);
     })
   );
 
@@ -33,32 +28,23 @@ boardsRouter
   .route('/:boardId')
   .get(
     asyncErrorHandler(async (req, res) => {
-      try {
-        const board = await boardsService.get(req.params.boardId);
-        res.json(board);
-      } catch (error) {
-        res.status(404).send('404 Not Found');
-      }
+      // reject(Error('Oops!'))
+      const board = await boardsService.get(req.params.boardId);
+      res.json(board);
     })
   )
   .delete(
     asyncErrorHandler(async (req, res) => {
-      try {
-        await boardsService.remove(req.params.boardId);
-        res.sendStatus(204);
-      } catch (error) {
-        res.status(404).send('404 Not Found');
-      }
+      // reject(Error('Oops!'))
+      await boardsService.remove(req.params.boardId);
+      res.sendStatus(204);
     })
   )
   .put(
     asyncErrorHandler(async (req, res) => {
-      try {
-        const board = await boardsService.update(req.params.boardId, req.body);
-        res.json(board);
-      } catch (error) {
-        res.status(404).send('404 Not Found');
-      }
+      // reject(Error('Oops!'))
+      const board = await boardsService.update(req.params.boardId, req.body);
+      res.json(board);
     })
   );
 
