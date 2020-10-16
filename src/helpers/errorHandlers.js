@@ -1,6 +1,10 @@
+const logger = require('../common/winston');
+
 // eslint-disable-next-line no-unused-vars
 const middlewareErrorHandler = (err, req, res, next) => {
   const { statusCode, message } = err;
+
+  logger.error(`${statusCode || 500} ${message}`);
 
   res.status(statusCode || 500).json({
     status: 'error',

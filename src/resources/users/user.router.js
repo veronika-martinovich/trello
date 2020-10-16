@@ -9,7 +9,7 @@ usersRouter
   .route('/')
   .get(
     asyncErrorHandler(async (req, res) => {
-      // reject(Error('Oops!'))
+      // reject(Error('Oops!'));
       const users = await usersService.getAll();
       res.json(users.map(user => User.toResponse(user)));
     })
