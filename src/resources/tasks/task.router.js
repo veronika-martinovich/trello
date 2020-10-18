@@ -36,7 +36,6 @@ tasksRouter
   .get(
     asyncErrorHandler(async (req, res) => {
       // reject(Error('Oops!'))
-      console.log(req.params.boardId, req.params.taskId);
       const task = await tasksService.getById(
         req.params.boardId,
         req.params.taskId
