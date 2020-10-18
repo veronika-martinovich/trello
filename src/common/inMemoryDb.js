@@ -18,7 +18,6 @@ const getAllEntities = async tableName => {
 
 const getEntity = async (tableName, id) => {
   const entities = db[tableName].filter(item => item.id === id);
-  console.log(entities);
   if (entities.length > 1) {
     console.error(
       `The DB data is damaged. Table: ${tableName}. Entity ID: ${id}`
