@@ -1,51 +1,51 @@
 const usersRouter = require('express').Router();
 const User = require('./user.model');
 const usersService = require('./user.service');
+const validateUser = require('./user.validation');
+const asyncErrorHandler = require('../../helpers/errorHandlers')
+  .asyncErrorHandler;
 
 usersRouter
   .route('/')
-  .get(async (req, res) => {
-    try {
+  .get(
+    asyncErrorHandler(async (req, res) => {
+      // reject(Error('Oops!'));
       const users = await usersService.getAll();
       res.json(users.map(user => User.toResponse(user)));
-    } catch (error) {
-      res.status(404).send('404 Not Found');
-    }
-  })
-  .post(async (req, res) => {
-    try {
-      const user = await usersService.save(User.createFromRequest(req.body));
+    })
+  )
+  .post(
+    asyncErrorHandler(async (req, res) => {
+      // reject(Error('Oops!'))
+      const userToCreate = User.createFromRequest(req.body);
+      validateUser(userToCreate);
+      const user = await usersService.save(userToCreate);
       res.status(200).send(User.toResponse(user));
-    } catch (error) {
-      res.status(404).send('404 Not Found');
-    }
-  });
+    })
+  );
 
 usersRouter
   .route('/:userId')
-  .get(async (req, res) => {
-    try {
+  .get(
+    asyncErrorHandler(async (req, res) => {
+      // reject(Error('Oops!'))
       const user = await usersService.get(req.params.userId);
       res.status(200).send(User.toResponse(user));
-    } catch (error) {
-      res.status(404).send('404 Not Found');
-    }
-  })
-  .delete(async (req, res) => {
-    try {
-      const user = await usersService.remove(req.params.userId);
-      res.status(200).send(User.toResponse(user));
-    } catch (error) {
-      res.status(404).send('404 Not Found');
-    }
-  })
-  .put(async (req, res) => {
-    try {
+    })
+  )
+  .delete(
+    asyncErrorHandler(async (req, res) => {
+      // reject(Error('Oops!'))
+      await usersService.remove(req.params.userId);
+      res.sendStatus(204);
+    })
+  )
+  .put(
+    asyncErrorHandler(async (req, res) => {
+      // reject(Error('Oops!'))
       const user = await usersService.update(req.params.userId, req.body);
       res.status(200).send(User.toResponse(user));
-    } catch (error) {
-      res.status(404).send('404 Not Found');
-    }
-  });
+    })
+  );
 
 module.exports = usersRouter;
