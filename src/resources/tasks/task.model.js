@@ -13,6 +13,6 @@ const taskSchema = new Schema(
   { collection: 'tasks' }
 );
 
-const User = mongoose.model('Task', taskSchema);
+const Task = mongoose.model('Task', taskSchema);
 
-module.exports = User;
+module.exports = Task;

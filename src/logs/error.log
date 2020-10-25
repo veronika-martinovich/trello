@@ -15,3 +15,23 @@
 2020-10-25 10:14:28 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "User"
 2020-10-25 10:14:28 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "User"
 2020-10-25 10:14:28 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "User"
+2020-10-25 10:57:23 +03:00: 	500 Task.createFromRequest is not a function
+2020-10-25 10:59:00 +03:00: 	500 The DB data is damaged.
+2020-10-25 10:59:55 +03:00: 	500 The DB data is damaged.
+2020-10-25 11:09:17 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "User"
+2020-10-25 11:09:18 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "User"
+2020-10-25 11:09:18 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "User"
+2020-10-25 11:09:19 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Board"
+2020-10-25 11:09:19 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
+2020-10-25 11:09:19 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Board"
+2020-10-25 11:09:19 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
+2020-10-25 11:09:19 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
+2020-10-25 11:09:19 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Board"
+2020-10-25 11:09:19 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Board"
+2020-10-25 11:09:20 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
+2020-10-25 11:09:20 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
+2020-10-25 11:09:20 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
+2020-10-25 11:09:20 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
+2020-10-25 11:09:20 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
+2020-10-25 11:09:20 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "Board"
+2020-10-25 11:10:51 +03:00: 	Unhandled Rejection at: [object Promise], reason: MongoError: user is not allowed to do action [dropDatabase] on [<dbname>.]
