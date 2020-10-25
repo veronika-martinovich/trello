@@ -324,3 +324,8 @@
 2020-10-25 11:10:51 +03:00: 	Successfully connect to MongoDB
 2020-10-25 11:10:51 +03:00: 	App is running on http://localhost:4000
 2020-10-25 11:10:51 +03:00: 	Unhandled Rejection at: [object Promise], reason: MongoError: user is not allowed to do action [dropDatabase] on [<dbname>.]
+2020-10-25 11:13:05 +03:00: 	Successfully connect to MongoDB
+2020-10-25 11:13:05 +03:00: 	App is running on http://localhost:4000
+2020-10-25 11:14:09 +03:00: 	Successfully connect to MongoDB
+2020-10-25 11:14:09 +03:00: 	App is running on http://localhost:4000
+2020-10-25 11:24:07 +03:00: 	POST http://localhost:4000/users queryParams:{} body:{"name":"2","login":"2","password":"2"}
