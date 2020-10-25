@@ -1,0 +1,17 @@
+2020-10-25 08:59:29 +03:00: 	500 User.toResponse is not a function
+2020-10-25 09:00:58 +03:00: 	500 User.toResponse is not a function
+2020-10-25 09:01:19 +03:00: 	500 User.toResponse is not a function
+2020-10-25 09:02:40 +03:00: 	500 Cast to ObjectId failed for value "{ id: '5f95b7db00d43269d4e1fe87' }" at path "_id" for model "User"
+2020-10-25 09:03:47 +03:00: 	500 Cast to ObjectId failed for value "{ id: '5f95b7db00d43269d4e1fe87' }" at path "_id" for model "User"
+2020-10-25 09:15:39 +03:00: 	500 Cast to ObjectId failed for value "{ id: '5f95b7db00d43269d4e1fe87' }" at path "_id" for model "User"
+2020-10-25 09:17:51 +03:00: 	500 usersRepo.update is not a function
+2020-10-25 09:17:51 +03:00: 	500 usersRepo.remove is not a function
+2020-10-25 09:17:51 +03:00: 	500 usersRepo.remove is not a function
+2020-10-25 09:26:20 +03:00: 	500 document must have an _id before saving
+2020-10-25 09:40:09 +03:00: 	500 usersRepo.update is not a function
+2020-10-25 09:40:09 +03:00: 	500 usersRepo.remove is not a function
+2020-10-25 09:40:09 +03:00: 	500 usersRepo.remove is not a function
+2020-10-25 10:12:59 +03:00: 	Unhandled Rejection at: [object Promise], reason: MongoError: user is not allowed to do action [dropDatabase] on [<dbname>.]
+2020-10-25 10:14:28 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "User"
+2020-10-25 10:14:28 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "User"
+2020-10-25 10:14:28 +03:00: 	500 Cast to ObjectId failed for value "undefined" at path "_id" for model "User"
