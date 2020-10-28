@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const toJson = require('@meanie/mongoose-to-json');
 
 const taskSchema = new Schema(
   {
@@ -12,6 +13,8 @@ const taskSchema = new Schema(
   },
   { collection: 'tasks' }
 );
+
+taskSchema.plugin(toJson);
 
 const Task = mongoose.model('Task', taskSchema);
 

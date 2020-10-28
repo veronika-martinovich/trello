@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const toJson = require('@meanie/mongoose-to-json');
 
 const userSchema = new Schema(
   {
@@ -9,6 +10,8 @@ const userSchema = new Schema(
   },
   { collection: 'users' }
 );
+
+userSchema.plugin(toJson);
 
 const User = mongoose.model('User', userSchema);
 
