@@ -1,15 +1,17 @@
-const uuid = require('uuid');
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
+const toJson = require('@meanie/mongoose-to-json');
 
-class Board {
-  constructor({ id = uuid(), title = 'TITLE', columns = [] } = {}) {
-    this.id = id;
-    this.title = title;
-    this.columns = columns;
-  }
+const boardSchema = new Schema(
+  {
+    title: String,
+    columns: Array
+  },
+  { collection: 'boards' }
+);
 
-  static createFromRequest(body) {
-    return new Board(body);
-  }
-}
+boardSchema.plugin(toJson);
+
+const Board = mongoose.model('Board', boardSchema);
 
 module.exports = Board;

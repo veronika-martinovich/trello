@@ -30,6 +30,10 @@ app.use('/', (req, res, next) => {
 app.use('/users', usersRouter);
 app.use('/boards', boardsRouter);
 boardsRouter.use('/:boardId/tasks', tasksRouter);
+app.use((req, res, next) => {
+  res.send(404);
+  next();
+});
 
 app.use(middlewareErrorHandler);
 
@@ -44,7 +48,5 @@ process.on('uncaughtException', (err, origin) => {
   const exit = process.exit;
   exit(1);
 });
-
-// throw Error('Oops!');
 
 module.exports = app;
