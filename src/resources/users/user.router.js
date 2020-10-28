@@ -14,6 +14,7 @@ usersRouter
   .post(
     asyncErrorHandler(async (req, res) => {
       const user = await usersService.save(req.body);
+      console.log(user);
       res.status(200).send(user);
     })
   );
